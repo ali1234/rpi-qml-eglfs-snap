@@ -1,0 +1,36 @@
+name: rssnews
+version: 0
+summary: QtQuick RSS reader example for Raspberry Pi
+description: A QtQuick example compiled for EGLFS on the Raspberry Pi.
+confinement: devmode
+
+
+apps:
+  rssnews:
+    command: desktop-launch rssnews -platform eglfs
+    plugs:
+      - network
+
+parts:
+  rssnews:
+    plugin: qmake
+    qt-version: qt5
+    source: rssnews
+    build-packages:
+      - qtbase5-dev
+      - libraspberrypi-dev
+    stage-packages:
+      # Here for the plugins-- they're not linked in automatically.
+      - libqt5declarative5
+      - qml-module-qtquick2
+      - qml-module-qtquick-xmllistmodel
+      - qml-module-qtquick-window2
+    after: [qt5]
+  qt5:
+    source: git://github.com/ubuntu/snapcraft-desktop-helpers
+    source-subdir: qt
+    make-parameters: ["FLAVOR=qt5"]
+    plugin: make
+    build-packages:
+      - qtbase5-dev
+      - dpkg-dev
