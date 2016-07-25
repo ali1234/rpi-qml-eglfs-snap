@@ -9,5 +9,5 @@ OTHER_FILES = rssnews.qml \
               content/*.js \
               content/images/*
 
-target.path = $$[QT_INSTALL_EXAMPLES]/quick/demos/rssnews
+target.path = /bin
 INSTALLS += target
