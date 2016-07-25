@@ -1,0 +1,13 @@
+Put Raspberry Pi 2 image to SD card: https://wiki.ubuntu.com/ARM/RaspberryPi
+
+ssh ubuntu@ubuntu.lan
+
+sudo apt-add-repository ppa:ci-train-ppa-service/landing-011
+sudo apt-add-repository ppa:ubuntu-raspi2/ppa
+sudo apt-add-repository ppa:a-j-buxton/qt5-raspi-eglfs
+sudo apt-get update
+
+sudo apt-get install libraspberrypi-dev
+cd /usr/lib
+sudo ln -s libGLESv2.so libGLESv2.so.2
+
